@@ -1,0 +1,110 @@
+import img1 from "../assets/img/pexels-thatguycraig000-1682699.jpg";
+import img2 from "../assets/img/pexels-fotios-photos-1425249.jpg";
+import img3 from "../assets/img/istockphoto-483534063-612x612.jpg";
+import img4 from "../assets/img/istockphoto-1218433118-612x612.jpg";
+import img5 from "../assets/img/istockphoto-471973362-612x612.jpg";
+
+export const products = [
+  {
+    id: 1,
+    title: "قميص قطني أنيق",
+    description: "قميص قطني عالي الجودة مناسب للمناسبات الرسمية والكاجوال",
+    price: 299,
+    image: img1,
+    category: "قمصان",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["أبيض", "أزرق", "أسود"],
+    rating: 4.5,
+    reviews: 128,
+  },
+  {
+    id: 2,
+    title: "تشيرت صيفي أنيق",
+    description: "تشيرت صيفي خفيف ومريح مصنوع من أجود أنواع القطن",
+    price: 450,
+    image: img5,
+    category: "تشيرتات",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["وردي", "أزرق فاتح", "أبيض"],
+    rating: 4.8,
+    reviews: 95,
+  },
+  {
+    id: 3,
+    title: "جاكيت جلدي كلاسيكي",
+    description: "جاكيت جلدي أصلي بتصميم كلاسيكي يناسب جميع المناسبات",
+    price: 899,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop",
+    category: "جاكيتات",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["أسود", "بني", "كحلي"],
+    rating: 4.7,
+    reviews: 203,
+  },
+  {
+    id: 4,
+    title: "بنطلون جينز عصري",
+    description: "بنطلون جينز عالي الجودة بقصة عصرية ومريحة",
+    price: 350,
+    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop",
+    category: "بناطيل",
+    sizes: ["28", "30", "32", "34", "36"],
+    colors: ["أزرق", "أسود", "رمادي"],
+    rating: 4.3,
+    reviews: 156,
+  },
+  {
+    id: 5,
+    title: "بلوزة حريرية فاخرة",
+    description: "بلوزة حريرية ناعمة بتصميم أنيق مناسبة للمناسبات الخاصة",
+    price: 520,
+    image:img4,
+    category: "بلوزات",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["ذهبي", "فضي", "أحمر"],
+    rating: 4.9,
+    reviews: 87,
+  },
+  {
+    id: 6,
+    title: "معطف شتوي دافئ",
+    description: "معطف شتوي دافئ ومقاوم للماء مع تصميم عصري",
+    price: 750,
+    image: img3,
+    category: "معاطف",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["أسود", "كحلي", "رمادي"],
+    rating: 4.6,
+    reviews: 142,
+  },
+  {
+    id: 7,
+    title: "تي شيرت رياضي",
+    description: "تي شيرت رياضي مصنوع من قماش يمتص العرق ومريح للغاية",
+    price: 180,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+    category: "ملابس رياضية",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["أبيض", "أسود", "أحمر", "أزرق"],
+    rating: 4.4,
+    reviews: 234,
+  },
+  {
+    id: 8,
+    title: "تنورة كلاسيكية",
+    description: "تنورة كلاسيكية أنيقة مناسبة للعمل والمناسبات الرسمية",
+    price: 280,
+    image: img2,
+    category: "تنانير",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["أسود", "كحلي", "رمادي"],
+    rating: 4.2,
+    reviews: 98,
+  },
+];
+
+export const categories = [
+  "جميع المنتجات",
+ 
+];
+
