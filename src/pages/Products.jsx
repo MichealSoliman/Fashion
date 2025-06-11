@@ -1,9 +1,13 @@
 import React from 'react';
+import Footer from './Footer';
+import ProductCard from '@/components/ProductCard';
+import ProductsSection from '@/components/ProductsSection';
 
 const Products = () => {
   return (
     <div>
-      <h1>المنتجات</h1>
+      <ProductsSection />
+      <Footer />
     </div>
   );
 };

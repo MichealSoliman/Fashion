@@ -1,9 +1,12 @@
 import React from 'react';
+import Footer from './Footer';
+import AboutSection from '@/components/AboutSection';
 
 const About = () => {
   return (
     <div dir='rtl' >
-      <h1>عن المتجر</h1>
+      <AboutSection />
+      <Footer />
     </div>
   );
 };

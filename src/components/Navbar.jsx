@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'الرئيسية', path: '/', label: 'Home' },
-    { name: 'عن المتجر', path: '/about', label: 'About' },
+    { name: ' من نحن', path: '/about', label: 'About' },
     { name: 'المنتجات', path: '/products', label: 'Products' },
   ];
 
