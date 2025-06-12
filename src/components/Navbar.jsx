@@ -98,6 +98,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               className="relative"
             >
+              <Link to="/favorites">
               <Button
                 variant="ghost"
                 size="icon"
@@ -114,6 +115,7 @@ const Navbar = () => {
                   </motion.span>
                 )}
               </Button>
+              </Link>
             </motion.div>
 
             {/* Shopping Cart */}

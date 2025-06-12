@@ -8,6 +8,8 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
 import './App.css';
+import Favorites from './pages/Favorites';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/favorites" element={<Favorites/>} />
           </Routes>
         </div>
       </Router>
