@@ -6,6 +6,8 @@ import Footer from './Footer';
 import StyleQuiz from './StyleQuiz';
 import StyleDay from './StyleDay';
 import Luxury from './Luxury';
+import FashionShow from './FashionShow';
+import FashionStories from './FashionStories';
 
 
 const Home = () => {
@@ -16,7 +18,9 @@ const Home = () => {
       <ProductsSection />
       <StyleQuiz />
     <StyleDay />
+    <FashionStories />
     <Luxury />
+    <FashionShow />
       <Footer />
     </div>
   );

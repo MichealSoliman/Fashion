@@ -83,16 +83,17 @@ const Luxury = () => {
 
             {/* العنوان الرئيسي بتأثير ذهبي */}
             <div className="relative inline-block mb-8">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent leading-tight">
-                الفخامة
-              </h1>
+            
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent mb-4">
+              الفخامة
+            </h2>
               <div className="absolute -inset-4 bg-gradient-to-r from-amber-400/20 via-yellow-500/20 to-amber-600/20 blur-2xl rounded-full animate-pulse"></div>
             </div>
 
             <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-800 via-slate-700 to-gray-900 bg-clip-text text-transparent mb-6">
+              <h4 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-800 via-slate-700 to-gray-900 bg-clip-text text-transparent mb-6">
                 تتجسد في التفاصيل
-              </h2>
+              </h4>
 
               <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
                 اكتشف عالماً من الأناقة والرقي، حيث تلتقي التصاميم الاستثنائية بأجود الخامات لتمنحك إطلالة لا تُنسى
