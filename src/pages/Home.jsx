@@ -9,6 +9,7 @@ import Luxury from './Luxury';
 import FashionShow from './FashionShow';
 import FashionStories from './FashionStories';
 import NewArrivals from './NewArrivals';
+import BrandStories from './BrandStories';
 
 
 const Home = () => {
@@ -18,11 +19,12 @@ const Home = () => {
       <AboutSection />
       <ProductsSection />
       <StyleQuiz />
-    <StyleDay />
-    <FashionStories />
-    <Luxury />
-    <NewArrivals />
-    <FashionShow />
+      <StyleDay />
+      <FashionStories />
+      <Luxury />
+      <NewArrivals />
+      <BrandStories />
+      <FashionShow />
       <Footer />
     </div>
   );
