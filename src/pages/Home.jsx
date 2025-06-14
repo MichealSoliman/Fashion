@@ -8,6 +8,7 @@ import StyleDay from './StyleDay';
 import Luxury from './Luxury';
 import FashionShow from './FashionShow';
 import FashionStories from './FashionStories';
+import NewArrivals from './NewArrivals';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
     <StyleDay />
     <FashionStories />
     <Luxury />
+    <NewArrivals />
     <FashionShow />
       <Footer />
     </div>
