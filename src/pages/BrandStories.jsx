@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import img1 from "../assets/img/pexels-bohlemedia-1884584.jpg"
 import { 
   Heart, 
   Star, 
@@ -108,7 +109,7 @@ const BrandStories = () => {
       tagline: "أصالة بلمسة عصرية",
       foundedYear: 1995,
       location: "دبي، الإمارات",
-      image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&h=600&fit=crop",
+      image: img1,
       logo: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=100&fit=crop",
       story: "نحن نحتفي بالتراث العربي الغني ونعيد تفسيره بطريقة عصرية تناسب المرأة العربية المعاصرة. من الأقمشة التقليدية المطرزة يدوياً إلى القصات العصرية، نحن نجمع بين عبق الماضي وروح الحاضر. كل تصميم يحكي قصة من التاريخ العربي العريق، مع لمسة حديثة تجعله مناسباً لكل مناسبة. نحن فخورون بكوننا سفراء للثقافة العربية في عالم الموضة.",
       achievements: [

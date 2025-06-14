@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, ShoppingBag, Star, Eye, Sparkles, TrendingUp, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
+import img1 from "../assets/img/pexels-69816215-8365688.jpg"
+import img2 from "../assets/img/pexels-pixabay-413960.jpg"
+import img3 from "../assets/img/pexels-melvin-buezo-1253763-2529148.jpg"
+import img4 from "../assets/img/pexels-karolina-grabowska-4996708.jpg"
+import img5 from "../assets/img/pexels-anuradha-mishra-357832475-14900849.jpg"
+import img6 from "../assets/img/pexels-shivam-31367058.jpg"
 const NewArrivals = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [likedProducts, setLikedProducts] = useState(new Set());
@@ -10,83 +15,84 @@ const NewArrivals = () => {
   // بيانات تمثيلية للمنتجات الجديدة
   const products = [
     {
-      id: 1,
-      name: "فستان صيفي أنيق",
-      price: 299,
-      originalPrice: 399,
-      image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=600&fit=crop",
-      category: "فساتين",
-      isNew: true,
-      isTrending: true,
-      rating: 4.8,
-      reviews: 124,
-      colors: ['#FF6B6B', '#4ECDC4', '#45B7D1']
-    },
-    {
-      id: 2,
-      name: "بلوزة كاجوال عصرية",
-      price: 189,
-      originalPrice: 249,
-      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop",
-      category: "بلوزات",
-      isNew: true,
-      isTrending: false,
-      rating: 4.6,
-      reviews: 89,
-      colors: ['#96CEB4', '#FFEAA7', '#DDA0DD']
-    },
-    {
-      id: 3,
-      name: "جاكيت جلد كلاسيكي",
-      price: 599,
-      originalPrice: 799,
-      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=600&fit=crop",
-      category: "جاكيتات",
-      isNew: true,
-      isTrending: true,
-      rating: 4.9,
-      reviews: 156,
-      colors: ['#2C3E50', '#8B4513', '#696969']
-    },
-    {
-      id: 4,
-      name: "تنورة ميدي أنيقة",
-      price: 229,
-      originalPrice: 299,
-      image: "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=400&h=600&fit=crop",
-      category: "تنانير",
-      isNew: true,
-      isTrending: false,
-      rating: 4.7,
-      reviews: 92,
-      colors: ['#FF7675', '#74B9FF', '#A29BFE']
-    },
-    {
-      id: 5,
-      name: "قميص حريري فاخر",
-      price: 349,
-      originalPrice: 449,
-      image: "https://images.unsplash.com/photo-1564257577-4a7e4b6b3c8d?w=400&h=600&fit=crop",
-      category: "قمصان",
-      isNew: true,
-      isTrending: true,
-      rating: 4.8,
-      reviews: 203,
-      colors: ['#FD79A8', '#FDCB6E', '#6C5CE7']
-    },
-    {
-      id: 6,
-      name: "بنطلون واسع عصري",
-      price: 279,
-      originalPrice: 359,
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=600&fit=crop",
-      category: "بناطيل",
-      isNew: true,
-      isTrending: false,
-      rating: 4.5,
-      reviews: 67,
-      colors: ['#00B894', '#E17055', '#0984E3']
-    }
+  id: 1,
+  name: "حقيبة يد جلد فاخرة",
+  price: 459,
+  originalPrice: 599,
+  image: img1,
+  category: "حقائب",
+  isNew: true,
+  isTrending: true,
+  rating: 4.9,
+  reviews: 173,
+  colors: ['#5D4037', '#A1887F', '#D7CCC8']
+},
+{
+  id: 2,
+  name: "نظارة شمسية كلاسيكية",
+  price: 199,
+  originalPrice: 269,
+  image: img2,
+  category: "إكسسوارات",
+  isNew: true,
+  isTrending: false,
+  rating: 4.6,
+  reviews: 88,
+  colors: ['#212121', '#FFC107', '#FF5722']
+},
+{
+  id: 3,
+  name: "حذاء رياضي مريح",
+  price: 329,
+  originalPrice: 429,
+  image: img3,
+  category: "أحذية",
+  isNew: true,
+  isTrending: true,
+  rating: 4.7,
+  reviews: 140,
+  colors: ['#2E86C1', '#A3E4D7', '#F9E79F']
+},
+{
+  id: 4,
+  name: "قبعة قش صيفية",
+  price: 149,
+  originalPrice: 199,
+  image: img4,
+  category: "إكسسوارات",
+  isNew: true,
+  isTrending: false,
+  rating: 4.4,
+  reviews: 54,
+  colors: ['#FAD7A0', '#EDBB99', '#E59866']
+},
+{
+  id: 5,
+  name: "وشاح حريري مطبوع",
+  price: 179,
+  originalPrice: 249,
+  image: img5,
+  category: "إكسسوارات",
+  isNew: true,
+  isTrending: true,
+  rating: 4.8,
+  reviews: 112,
+  colors: ['#F1948A', '#F5CBA7', '#BB8FCE']
+},
+{
+  id: 6,
+  name: "حزام جلد أنيق",
+  price: 139,
+  originalPrice: 189,
+  image:img6,
+  category: "إكسسوارات",
+  isNew: true,
+  isTrending: false,
+  rating: 4.5,
+  reviews: 61,
+  colors: ['#4E342E', '#A1887F', '#BCAAA4']
+}
+
   ];
 
   const toggleLike = (productId) => {
