@@ -11,6 +11,7 @@ import FashionStories from './FashionStories';
 import NewArrivals from './NewArrivals';
 import BrandStories from './BrandStories';
 import ScrollToTop from './ScrollToTop';
+import FAQSection from './FAQ';
 
 
 
@@ -26,7 +27,7 @@ const Home = () => {
       <Luxury />
       <NewArrivals />
       <BrandStories />
-      
+      <FAQSection />
       <FashionShow />
       <Footer />
       <ScrollToTop />

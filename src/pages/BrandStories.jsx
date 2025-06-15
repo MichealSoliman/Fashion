@@ -57,7 +57,8 @@ const BrandStories = () => {
       color: "#8B5CF6",
       founder: "إيزابيل دوبوا",
       employees: "2,500+",
-      countries: "45"
+      countries: "45",
+      link: "/brands",
     },
     {
       id: 2,
@@ -79,7 +80,8 @@ const BrandStories = () => {
       color: "#F59E0B",
       founder: "أليكس جونسون",
       employees: "800+",
-      countries: "25"
+      countries: "25",
+      link: "/blog1"
     },
     {
       id: 3,
@@ -227,7 +229,7 @@ const BrandStories = () => {
       </div>
 
       {/* مؤشر الماوس التفاعلي */}
-      <motion.div
+      {/* <motion.div
         className="fixed w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full pointer-events-none z-50 mix-blend-difference"
         style={{
           left: mousePosition.x - 12,
@@ -239,7 +241,7 @@ const BrandStories = () => {
         transition={{
           duration: 0.3,
         }}
-      />
+      /> */}
 
       <div className="container mx-auto px-4 relative z-10">
         {/* العنوان الرئيسي المحسن */}
