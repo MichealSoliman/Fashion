@@ -609,7 +609,7 @@ const StoryModal = ({ story, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
       onClick={onClose}
     >
       <motion.div
@@ -617,11 +617,11 @@ const StoryModal = ({ story, onClose }) => {
         animate={{ scale: 1, opacity: 1, rotateY: 0 }}
         exit={{ scale: 0.7, opacity: 0, rotateY: 15 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="modal-content rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+        className="modal-content rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto bg-black/80"
         onClick={(e) => e.stopPropagation()}
       >
         {/* رأس المودال */}
-        <div className="relative h-80 overflow-hidden rounded-t-3xl ">
+        <div className="relative h-80 overflow-hidden rounded-t-3xl  ">
           <motion.img
             src={story.image}
             alt={story.name}
