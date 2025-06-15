@@ -1,116 +1,152 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { 
+  Search, 
+  ChevronDown, 
+  MessageCircle, 
+  Sparkles, 
+  HelpCircle,
+  ArrowRight,
+  Users,
+  Crown,
+  Globe,
+  Award
+} from 'lucide-react';
 
 const FAQItem = ({ question, answer, isOpen, onToggle, index }) => {
   const contentRef = useRef(null);
-  const [contentHeight, setContentHeight] = useState(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, [answer]);
 
   return (
-    <div className="border-b border-gray-200 last:border-b-0 group">
-      <button
-        className="flex justify-between items-center w-full text-right py-6 px-6 bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset group-hover:shadow-sm"
+    <motion.div 
+      className="border-b border-purple-100 last:border-b-0 group overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.01 }}
+    >
+      <motion.button
+        className="flex justify-between items-center w-full text-right py-6 px-6 bg-white/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-inset group-hover:shadow-lg relative overflow-hidden"
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-content-${index}`}
+        whileHover={{ x: 5 }}
+        whileTap={{ scale: 0.98 }}
       >
-        <span className="text-lg font-semibold text-gray-800 flex-1 text-right group-hover:text-blue-700 transition-colors duration-200">
+        {/* تأثير خلفي متحرك */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10"
+          initial={{ x: '-100%' }}
+          whileHover={{ x: '0%' }}
+          transition={{ duration: 0.6 }}
+        />
+        
+        <span className="text-lg font-semibold text-gray-800 flex-1 text-right group-hover:text-purple-700 transition-colors duration-300 relative z-10">
           {question}
         </span>
-        <div className="ml-4 flex-shrink-0">
-          <div className={`w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center transition-all duration-300 ${
-            isOpen ? 'bg-blue-500 rotate-180' : 'group-hover:bg-blue-200'
-          }`}>
-            <svg
-              className={`w-4 h-4 transition-colors duration-200 ${
-                isOpen ? 'text-white' : 'text-blue-600'
+        <div className="ml-4 flex-shrink-0 relative z-10">
+          <motion.div 
+            className={`w-10 h-10 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 flex items-center justify-center transition-all duration-500 shadow-md ${
+              isOpen ? 'bg-gradient-to-r from-purple-500 to-pink-600 shadow-lg' : 'group-hover:from-purple-200 group-hover:to-pink-200'
+            }`}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown
+              className={`w-5 h-5 transition-colors duration-300 ${
+                isOpen ? 'text-white' : 'text-purple-600'
               }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
+            />
+          </motion.div>
         </div>
-      </button>
+      </motion.button>
+      
+      {/* محتوى الإجابة مع أنيميشن محسن */}
       <div
-        id={`faq-content-${index}`}
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{
-          maxHeight: isOpen ? `${contentHeight}px` : '0px',
+          maxHeight: isOpen ? '1000px' : '0px',
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <div
+        <motion.div
           ref={contentRef}
           className="px-6 pb-6 text-gray-600 leading-relaxed text-right"
+          initial={false}
+          animate={isOpen ? 
+            { y: 0, opacity: 1 } : 
+            { y: -20, opacity: 0 }
+          }
+          transition={{ 
+            duration: 0.4,
+            ease: "easeInOut",
+            delay: isOpen ? 0.2 : 0
+          }}
         >
-          <div className="border-r-4 border-blue-200 pr-4 bg-gray-50 p-4 rounded-r-lg">
+          <div className="border-r-4 border-purple-400 pr-4 bg-gradient-to-r from-purple-50/50 to-pink-50/50 p-6 rounded-r-xl backdrop-blur-sm shadow-inner">
             {answer}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const SearchBar = ({ searchTerm, onSearchChange }) => {
   return (
-    <div className="relative mb-8">
-      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-        <svg
-          className="w-5 h-5 text-gray-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-      </div>
-      <input
+    <motion.div 
+      className="relative mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.div 
+        className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none"
+        whileHover={{ scale: 1.1 }}
+      >
+        <Search className="w-5 h-5 text-purple-400" />
+      </motion.div>
+      <motion.input
         type="text"
         placeholder="ابحث في الأسئلة الشائعة..."
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right"
+        className="w-full pr-12 pl-4 py-4 border border-purple-200 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-right bg-white/80 backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-xl"
         dir="rtl"
+        whileFocus={{ scale: 1.02 }}
       />
-    </div>
+    </motion.div>
   );
 };
 
 const CategoryFilter = ({ categories, selectedCategory, onCategoryChange }) => {
   return (
-    <div className="flex flex-wrap gap-2 mb-8 justify-center">
-      {categories.map((category) => (
-        <button
+    <motion.div 
+      className="flex flex-wrap gap-3 mb-10 justify-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, staggerChildren: 0.1 }}
+    >
+      {categories.map((category, index) => (
+        <motion.button
           key={category.id}
           onClick={() => onCategoryChange(category.id)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          initial={{ opacity: 0, y: 20, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 backdrop-blur-sm shadow-lg ${
             selectedCategory === category.id
-              ? 'bg-blue-500 text-white shadow-md'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-purple-300'
+              : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 hover:text-purple-700'
           }`}
         >
           {category.name}
-        </button>
+        </motion.button>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
@@ -118,6 +154,17 @@ const FAQSection = () => {
   const [openItems, setOpenItems] = useState(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+
+  // تتبع حركة الماوس
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'الكل' },
@@ -216,17 +263,129 @@ const FAQSection = () => {
     setOpenItems(new Set());
   };
 
+  // متغيرات الأنيميشن المبسطة
+  const floatingVariants = {
+    animate: {
+      y: [-20, 20, -20],
+      x: [-10, 10, -10],
+      rotate: [-5, 5, -5],
+      transition: {
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  // تحويلات التمرير
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
+
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white" dir="rtl">
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            الأسئلة الشائعة
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+    <section className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 relative overflow-hidden" dir="rtl">
+      {/* خلفية متحركة متقدمة */}
+      <div className="absolute inset-0 opacity-30">
+        <motion.div
+          className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full blur-3xl"
+          style={{ y: y1, opacity }}
+          variants={floatingVariants}
+          animate="animate"
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full blur-3xl"
+          style={{ y: y2, opacity }}
+          variants={floatingVariants}
+          animate="animate"
+          transition={{ delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-24 h-24 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full blur-3xl"
+          variants={floatingVariants}
+          animate="animate"
+          transition={{ delay: 2 }}
+        />
+        
+        {/* جسيمات متحركة */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        {/* Header محسن */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg"
+          >
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <HelpCircle className="w-5 h-5" />
+            </motion.div>
+            أسئلة وأجوبة شاملة
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <HelpCircle className="w-5 h-5" />
+            </motion.div>
+          </motion.div>
+
+          <motion.h2 
+            className="text-6xl md:text-7xl font-bold text-gray-900 mb-8"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <span className="text-shimmer bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+              الأسئلة الشائعة
+            </span>
+          </motion.h2>
+          
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             إليك إجابات على أكثر الأسئلة شيوعاً حول منتجاتنا وخدماتنا
-          </p>
+            <br />
+            <span className="text-purple-600 font-semibold">كل ما تحتاج لمعرفته في مكان واحد</span>
+          </motion.p>
+
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 120 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="h-1 bg-gradient-to-r from-purple-500 to-pink-600 mx-auto rounded-full"
+          />
           
           {/* Search Bar */}
           <SearchBar 
@@ -242,58 +401,161 @@ const FAQSection = () => {
           />
           
           {/* Expand/Collapse All Buttons */}
-          <div className="flex justify-center gap-4 mb-8">
-            <button
+          <motion.div 
+            className="flex justify-center gap-6 mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.button
               onClick={expandAll}
-              className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 text-sm font-semibold text-purple-600 hover:text-purple-800 transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl"
             >
               توسيع الكل
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={collapseAll}
-              className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors duration-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 text-sm font-semibold text-gray-600 hover:text-gray-800 transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl"
             >
               طي الكل
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
 
-        {/* FAQ Items */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-          {filteredFaqs.length > 0 ? (
-            filteredFaqs.map((faq, index) => (
-              <FAQItem
-                key={faq.id}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openItems.has(faq.id)}
-                onToggle={() => toggleItem(faq.id)}
-                index={index}
-              />
-            ))
-          ) : (
-            <div className="p-8 text-center text-gray-500">
-              <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.291-1.007-5.824-2.562M15 6.306a7.962 7.962 0 00-6 0m6 0a7.962 7.962 0 105.824 8.518M9.172 16.172L6.343 19.01a1.992 1.992 0 01-2.829 0l-.707-.707a1.992 1.992 0 010-2.829l2.829-2.828M15.172 6.172a4 4 0 00-6 0" />
-              </svg>
-              <p>لم يتم العثور على أسئلة تطابق بحثك</p>
-            </div>
-          )}
-        </div>
+     
 
-        {/* Contact CTA */}
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
+        {/* FAQ Items مع key لضمان إعادة التشغيل */}
+        <motion.div 
+          className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-purple-100"
+          key={`${selectedCategory}-${searchTerm}`} // إضافة key فريد لإعادة التشغيل
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatePresence mode="wait">
+            {filteredFaqs.length > 0 ? (
+              <motion.div
+                key="faq-list"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {filteredFaqs.map((faq, index) => (
+                  <FAQItem
+                    key={faq.id}
+                    question={faq.question}
+                    answer={faq.answer}
+                    isOpen={openItems.has(faq.id)}
+                    onToggle={() => toggleItem(faq.id)}
+                    index={index}
+                  />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="no-results"
+                className="p-12 text-center text-gray-500"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Search className="w-20 h-20 mx-auto mb-6 text-gray-300" />
+                </motion.div>
+                <p className="text-xl font-semibold mb-2">لم يتم العثور على أسئلة</p>
+                <p>جرب البحث بكلمات مختلفة أو اختر فئة أخرى</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Contact CTA محسن */}
+        <motion.div 
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <motion.p 
+            className="text-gray-600 mb-6 text-lg"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             لم تجد إجابة لسؤالك؟
-          </p>
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-            تواصل معنا
-          </button>
-        </div>
+          </motion.p>
+          <motion.button 
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-12 rounded-full transition-all duration-300 shadow-2xl hover:shadow-purple-300 transform hover:-translate-y-1 flex items-center gap-3 mx-auto relative overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span
+              className="flex items-center gap-3 relative z-10"
+              whileHover={{ x: 5 }}
+            >
+              <MessageCircle className="w-5 h-5" />
+              تواصل معنا
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.div>
+            </motion.span>
+          </motion.button>
+        </motion.div>
+
+           {/* إحصائيات سريعة */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+        >
+          {[
+            { icon: MessageCircle, label: "سؤال", value: "100+", color: "#8B5CF6" },
+            { icon: Users, label: "عميل راضي", value: "50K+", color: "#10B981" },
+            { icon: Globe, label: "دولة", value: "25+", color: "#F59E0B" },
+            { icon: Award, label: "تقييم", value: "4.9★", color: "#DC2626" }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05, y: -8 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="text-center p-6 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg mt-5"
+            >
+              <motion.div
+                className="mb-3"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                style={{ color: stat.color }}
+              >
+                <stat.icon className="w-8 h-8 mx-auto" />
+              </motion.div>
+              <motion.div
+                className="text-3xl font-bold text-gray-900 mb-1"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                {stat.value}
+              </motion.div>
+              <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default FAQSection;
-
