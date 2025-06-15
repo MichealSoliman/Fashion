@@ -23,6 +23,9 @@ const Navbar = () => {
     { name: 'الرئيسية', path: '/', label: 'Home' },
     { name: ' من نحن', path: '/about', label: 'About' },
     { name: 'المنتجات', path: '/products', label: 'Products' },
+    { name: 'تصاميمنا', path: '', label: '' },
+    { name: ' مركات', path: '', label: '' },
+    
   ];
 
   const isActivePath = (path) => location.pathname === path;

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { 
   Facebook, 
   Instagram, 
@@ -13,7 +14,8 @@ import {
   RotateCcw,
   Heart,
   Star,
-  ChevronRight
+  ChevronRight,
+  MessageCircle
 } from 'lucide-react';
 
 const Footer = () => {
@@ -245,24 +247,30 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div class="fixed bottom-4 left-4 flex flex-col gap-3 z-50">
+ <div className="fixed bottom-4 left-4 flex flex-col gap-3 z-50">
 
-  <a href="tel:0560000000" 
-     class="bg-blue-600 text-white flex items-center gap-2 px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    </svg>
-    اتصال
-  </a>
+      {/* زر الاتصال */}
+      <a
+        href="tel:0560000000"
+        className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-transform hover:scale-110"
+        title="اتصل بنا"
+      >
+        <Phone className="w-5 h-5" />
+      </a>
 
- 
-  <a href="https://wa.me/966560000000" target="_blank"
-     class="bg-green-500 text-white flex items-center gap-2 px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512" fill="currentColor">
-      <path d="M380.9 97.1C339 ... (اختصرنا لأغراض العرض)" />
-    </svg>
-    واتساب
-  </a>
-</div>
+      {/* زر الواتساب */}
+      <a
+        href="https://wa.me/966560000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-transform hover:scale-110"
+        title="تواصل واتساب"
+      >
+        <MessageCircle className="w-5 h-5" />
+      </a>
+
+    </div>
+
     </footer>
   );
 };

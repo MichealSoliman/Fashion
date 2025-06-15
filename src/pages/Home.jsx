@@ -10,6 +10,8 @@ import FashionShow from './FashionShow';
 import FashionStories from './FashionStories';
 import NewArrivals from './NewArrivals';
 import BrandStories from './BrandStories';
+import ScrollToTop from './ScrollToTop';
+
 
 
 const Home = () => {
@@ -24,8 +26,10 @@ const Home = () => {
       <Luxury />
       <NewArrivals />
       <BrandStories />
+      
       <FashionShow />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
