@@ -769,4 +769,4 @@ const FashionStories = () => {
 };
 
 export default FashionStories;
-
+ 
