@@ -12,6 +12,7 @@ import NewArrivals from './NewArrivals';
 import BrandStories from './BrandStories';
 import ScrollToTop from './ScrollToTop';
 import FAQSection from './FAQ';
+import ContactUs from './Contact-Us';
 
 
 
@@ -29,6 +30,7 @@ const Home = () => {
       <BrandStories />
       <FAQSection />
       <FashionShow />
+      <ContactUs />
       <Footer />
       <ScrollToTop />
     </div>
