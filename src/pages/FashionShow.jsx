@@ -439,55 +439,7 @@ const FashionShow = () => {
   </div>
 </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                Synapse AI
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                مساعدك الذكي لتعزيز الإنتاجية وتبسيط سير العمل باستخدام أحدث تقنيات الذكاء الاصطناعي.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">المنتج</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">الميزات</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">التسعير</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">التكاملات</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">الأمان</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">الشركة</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">من نحن</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">المدونة</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">الوظائف</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">اتصل بنا</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">الدعم</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">مركز المساعدة</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">الوثائق</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">حالة النظام</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">سياسة الخصوصية</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Synapse AI. جميع الحقوق محفوظة.</p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 };
